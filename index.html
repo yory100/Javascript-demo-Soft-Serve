@@ -21,6 +21,7 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
+  <link rel="stylesheet" href="/css/main.css">
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -28,75 +29,39 @@
 
 </head>
 
-<body>
+<body onload="fetchTextNotes()">
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <nav class="container">
-      <a href="home">Home</a>
-      <a href="about">About</a>
-      <a href="some-shit">Some Shit</a>
+    <nav class="container nav-bar">
+      <a href="#" id="home"><h4>Notes</h4></a>
+
+      <a href="#" id="search">
+        <svg id="i-search" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <circle cx="14" cy="14" r="12" />
+          <path d="M23 23 L30 30"  />
+        </svg>
+      </a>
+
+      <input type="text" id="inputsearch" class="s-input invisible" onfocusout="toogleClass()">
+
+      <a href="#" id="add-note">
+        <svg id="i-plus" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+          <path d="M16 2 L16 30 M2 16 L30 16" />
+        </svg>
+      </a>
     </nav>
+
+    <!-- Clear nav bar fix position -->
+    <div style="margin-top: 4rem; height: .1rem;"></div>
 
     <div class="container" id="content">
       <!-- Content from loader.js goes here -->
-      <div class="row">
-        <div class="one-half column" style="margin-top: 25%">
-          <h4>Home page</h4>
-          <p>This index.html page is a placeholder with the CSS, font and favicon. It's just waiting for you to add some
-            content! If you need some help hit up the <a href="http://www.getskeleton.com">Skeleton documentation</a>.</p>
-        </div>
-      </div>
-
-      <svg id="i-search" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <circle cx="14" cy="14" r="12" />
-        <path d="M23 23 L30 30"  />
-      </svg>
-
-      <svg id="i-close" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <path d="M2 30 L30 2 M30 30 L2 2" />
-      </svg> 
-
-      <svg id="i-plus" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <path d="M16 2 L16 30 M2 16 L30 16" /> <circle cx="16" cy="16" r="14" />
-      </svg>
-
-      <svg id="i-minus" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <path d="M2 16 L30 16" /> <circle cx="16" cy="16" r="14" />
-      </svg>
-
-      <svg id="i-arrow-left" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <path d="M10 6 L2 16 10 26 M2 16 L30 16" />
-      </svg>
-
-      <svg id="i-trash" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <path d="M28 6 L6 6 8 30 24 30 26 6 4 6 M16 12 L16 24 M21 12 L20 24 M11 12 L12 24 M12 6 L13 2 19 2 20 6" />
-      </svg>
-
-      <svg id="i-file" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <path d="M6 2 L6 30 26 30 26 10 18 2 Z M18 2 L18 10 26 10" />
-      </svg>
-
-      <svg id="i-folder" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <path d="M2 26 L30 26 30 7 14 7 10 4 2 4 Z M30 12 L2 12" />
-      </svg>
-
-      <svg id="i-edit" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z" />
-      </svg>
-
-      <svg id="i-ellipsis-vertical" viewBox="0 0 32 32" width="32" height="32" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-        <circle cx="16" cy="7" r="2" />
-        <circle cx="16" cy="16" r="2" />
-        <circle cx="16" cy="25" r="2" />
-      </svg>
-
     </div>
 
   <!-- Script dependencies
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://unpkg.com/ionicons@4.4.4/dist/ionicons.js"></script>
+  <script src="https://chancejs.com/chance.min.js"></script>
 
   <!-- Custom js an jquery files
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->

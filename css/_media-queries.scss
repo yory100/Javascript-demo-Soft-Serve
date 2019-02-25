@@ -1,0 +1,34 @@
+
+@media (min-width: 550px) {
+
+    .nav-bar {
+        height: 6rem !important;
+    }
+
+    div[style] {
+        margin-top: 6rem !important;
+    }
+
+    div#content {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr) ) ;
+
+        .card {
+            height: 25vh; 
+
+            h4 {
+                font-size: 2rem;
+            }
+        }
+    }
+
+    #inpuText {
+        grid-column: 1 / -1
+    }
+
+    .read-message {
+        grid-column: 1 / -1
+    }
+
+}

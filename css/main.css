@@ -1,0 +1,128 @@
+@media (min-width: 550px) {
+  .nav-bar {
+    height: 6rem !important;
+  }
+  div[style] {
+    margin-top: 6rem !important;
+  }
+  div#content {
+    display: -ms-grid;
+    display: grid;
+    grid-gap: 10px;
+    -ms-grid-columns: (minmax(150px, 1fr))[auto-fill];
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+  div#content .card {
+    height: 25vh;
+  }
+  div#content .card h4 {
+    font-size: 2rem;
+  }
+  #inpuText {
+    grid-column: 1 / -1;
+  }
+  .read-message {
+    grid-column: 1 / -1;
+  }
+}
+
+h4 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+form {
+  margin-top: 1rem;
+}
+
+form textarea {
+  height: 200px;
+}
+
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem;
+  border-bottom: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.nav-bar a {
+  margin-left: 1.5rem;
+}
+
+.nav-bar #home {
+  margin-right: auto;
+}
+
+.nav-bar .s-input {
+  margin: 0;
+  width: 50%;
+  height: 2.5rem;
+}
+
+.card {
+  position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin-top: 1rem;
+  height: 6rem;
+  width: 100%;
+  overflow: hidden;
+  padding: 1rem;
+  border-radius: .8rem;
+  border: 1px dotted black;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.delete {
+  position: absolute;
+  bottom: 0;
+  right: 10px;
+  color: orangered;
+}
+
+.read-message {
+  margin-top: 1rem;
+}
+
+.invisible {
+  display: none;
+}
+/*# sourceMappingURL=main.css.map */
