@@ -1,0 +1,14 @@
+{
+  "posts": [
+    {
+      "title": "json-server",
+      "message": "typicode",
+      "id": 3
+    },
+    {
+      "title": "some note",
+      "message": "text message",
+      "id": 4
+    }
+  ]
+}

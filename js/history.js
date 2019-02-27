@@ -4,22 +4,18 @@ const homeA            = document.getElementById( 'home' );
 const searchA          = document.getElementById( 'search' );
 const searchinPut      = document.getElementById( 'inputsearch' );
 const addNote          = document.getElementById( 'add-note' );
-const saveText         = document.getElementById( 'inpuText' );
 
 loadEventListeners();
 
 function loadEventListeners() {
 
-    homeA.addEventListener( 'click', injectHtml )
-    searchA.addEventListener( 'click', toogleClass )
-    addNote.addEventListener( 'click', injectHtml )
-    saveText,addEventListener( 'submit', saveTextNote ) // I don't understand why it is not working with a dot "."
+    homeA.addEventListener( 'click', injectHtml)
+    searchA.addEventListener( 'click', toogleClass)
+    addNote.addEventListener( 'click', injectHtml)
     window.onkeyup = filterInput;
 }
 
 function injectHtml(e) {
-
-    e.preventDefault();
 
     const clickTarget = e.target.parentElement.id;
 
@@ -34,7 +30,8 @@ function injectHtml(e) {
             fetchTextNotes();
             break;
     }
-    
+
+    e.preventDefault();
 }
 
 function fetchTextNotes() {
@@ -98,6 +95,9 @@ function deleteTextNotes( id ) {
     fetchTextNotes();
 
 }
+
+
+document.getElementById( 'inpuText' ),addEventListener( 'submit', saveTextNote )
 
 function saveTextNote( e ) {
 
