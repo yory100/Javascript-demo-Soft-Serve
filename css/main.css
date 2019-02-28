@@ -2,7 +2,7 @@
   .nav-bar {
     height: 6rem !important;
   }
-  div[style] {
+  #under-fix-nav {
     margin-top: 6rem !important;
   }
   div#content {

@@ -33,35 +33,51 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-    <nav class="container nav-bar">
-      <a href="#" id="home"><h4>Notes</h4></a>
+  <nav class="container nav-bar">
+    <a href="#" id="home">
+      <h4>Notes</h4>
+    </a>
 
-      <a href="#" id="search">
-        <svg id="i-search" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <circle cx="14" cy="14" r="12" />
-          <path d="M23 23 L30 30"  />
+    <a href="#" id="search">
+      <svg id="i-search" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round"
+        stroke-linejoin="round" stroke-width="2">
+        <circle cx="14" cy="14" r="12" />
+        <path d="M23 23 L30 30" />
+      </svg>
+    </a>
+
+    <input type="text" id="inputsearch" class="s-input invisible" onfocusout="toogleClass()">
+
+    <a href="#" id="add-note">
+      <svg id="i-plus" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round"
+        stroke-linejoin="round" stroke-width="2">
+        <path d="M16 2 L16 30 M2 16 L30 16" />
+      </svg>
+    </a>
+  </nav>
+
+  <!-- Clear nav bar fix position -->
+  <div style="margin-top: 4rem; height: .1rem;" id="under-fix-nav"></div>
+
+  <div class="container" id="content">
+    <!-- Content from loader.js goes here -->
+  </div>
+
+  <template id="input-form">
+    <form id="inpuText">
+      <input type="text" id="titleInput" class="u-full-width">
+      <textarea name="message" id="messageInput" class="u-full-width"></textarea>
+      <button type="submit" onclick="saveTextNote(event)">
+        <svg id="i-folder" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round"
+          stroke-linejoin="round" stroke-width="2">
+          <path d="M2 26 L30 26 30 7 14 7 10 4 2 4 Z M30 12 L2 12" />
         </svg>
-      </a>
-
-      <input type="text" id="inputsearch" class="s-input invisible" onfocusout="toogleClass()">
-
-      <a href="#" id="add-note">
-        <svg id="i-plus" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-          <path d="M16 2 L16 30 M2 16 L30 16" />
-        </svg>
-      </a>
-    </nav>
-
-    <!-- Clear nav bar fix position -->
-    <div style="margin-top: 4rem; height: .1rem;"></div>
-
-    <div class="container" id="content">
-      <!-- Content from loader.js goes here -->
-    </div>
+      </button>
+    </form>
+  </template>
 
   <!-- Script dependencies
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="https://chancejs.com/chance.min.js"></script>
 
   <!-- Custom js an jquery files
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
