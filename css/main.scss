@@ -36,6 +36,8 @@ form {
     right: 0;
     height: 4rem;
     border-bottom: 1px solid $dark-color; 
+    background: #fff;
+    z-index: 1;
 
     display: flex;
     justify-content: flex-end;

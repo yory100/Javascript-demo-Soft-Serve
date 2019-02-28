@@ -4,7 +4,8 @@ const homeA            = document.getElementById( 'home' );
 const searchA          = document.getElementById( 'search' );
 const searchinPut      = document.getElementById( 'inputsearch' );
 const addNote          = document.getElementById( 'add-note' );
-const saveText         = document.getElementById( 'inpuText' );
+let url                = 'http://localhost:3000/posts';
+
 
 loadEventListeners();
 
@@ -13,7 +14,6 @@ function loadEventListeners() {
     homeA.addEventListener( 'click', injectHtml )
     searchA.addEventListener( 'click', toogleClass )
     addNote.addEventListener( 'click', injectHtml )
-    saveText,addEventListener( 'submit', saveTextNote ) // I don't understand why it is not working with a dot "."
     window.onkeyup = filterInput;
 }
 
@@ -40,30 +40,37 @@ function injectHtml(e) {
 function fetchTextNotes() {
 
     let textNotes     = JSON.parse( localStorage.getItem( 'textNotes' ) );
-    const contentToReplace = document.getElementById( 'content' );
 
     contentToReplace.innerHTML = '';
 
-    for (const note of textNotes) {
+    getData( url )
+    .then( data => {
 
-        let title  = note.title;
-        let id     = note.id;
+        textNotes = data;
 
-        contentToReplace.innerHTML += `<div class="card" onclick="readTextNode('${id}')">
-                                            <h4>${title}</h4>
-                                            <a href="#" onclick="deleteTextNotes('${id}')" class="delete">
-                                                <svg id="i-close" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                <path d="M2 30 L30 2 M30 30 L2 2" />
-                                                </svg> 
-                                            </a>
-                                        </div> `
-    }
+        for (const note of textNotes) {
+
+            let title  = note.title;
+            let id     = note.id;
+    
+            contentToReplace.innerHTML += `<div class="card" onclick="readTextNode('${id}')">
+                                                <h4>${title}</h4>
+                                                <a href="#" onclick="deleteTextNotes('${id}')" class="delete">
+                                                    <svg id="i-close" viewBox="0 0 32 32" width="12" height="12" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                    <path d="M2 30 L30 2 M30 30 L2 2" />
+                                                    </svg> 
+                                                </a>
+                                            </div> `
+        }
+
+    } )
+    .catch(error => console.error(error));
         
 }
 
 function readTextNode( id ) {
 
-    let textNotes     = JSON.parse( localStorage.getItem( 'textNotes' ) );
+    let textNotes = [];
 
     for (const note of textNotes) {
 
@@ -101,34 +108,21 @@ function deleteTextNotes( id ) {
 
 function saveTextNote( e ) {
 
+    e.preventDefault();
+
     let textTitle   = document.getElementById( 'titleInput' ).value;
     let textMessage = document.getElementById( 'messageInput' ).value;
-    let issueId     = chance.guid(); //chance.js plugin
-
+    
     let text = {
-        id: issueId,
         title: textTitle,
         message: textMessage,
     }
 
-
-    if ( localStorage.getItem( 'textNotes' ) == null ) {
-
-        let textNotes = [];
-        textNotes.push( text );
-        localStorage.setItem( 'textNotes', JSON.stringify( textNotes ) )
-        
-    }else {
-
-        let textNotes = JSON.parse( localStorage.getItem( 'textNotes' ) );
-        textNotes.push( text );
-        localStorage.setItem( 'textNotes', JSON.stringify( textNotes ) )
-
-    }
+    postData( url, text )
+    .then(data => console.log(JSON.stringify(data)))
+    .catch(error => console.error(error));
 
     fetchTextNotes();
-
-    e.preventDefault();
 
 }
 
@@ -140,6 +134,8 @@ function toogleClass() {
 }
 
 function filterInput(e) {
+
+    e.preventDefault();
 
     let inputValue = e.target.value.toLowerCase();
     const elements = document.querySelectorAll('.card h4')
@@ -154,18 +150,41 @@ function filterInput(e) {
         }
     } )
 
-    // if()
-    
-
-    e.preventDefault();
-
 }
 
+// Example POST method implementation:
+/*
+postData(`http://example.com/answer`, {answer: 42})
+  .then(data => console.log(JSON.stringify(data))) // JSON-string from `response.json()` call
+  .catch(error => console.error(error));
+
+getData( url )
+    .then( data => some = data )
+    .catch(error => console.error(error));
+*/
+function postData(url = ``, data = {}) {
+
+    return fetch(url, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json());
+}
+
+function getData(url = ``) {
+
+    return fetch(url)
+    .then(response => response.json());
+
+}
 
 let addButton = ` <form id="inpuText">
                         <input type="text" id="titleInput" class="u-full-width">
                         <textarea name="message" id="messageInput" class="u-full-width"></textarea>
-                        <button type="submit">
+                        <button type="submit" onclick="saveTextNote(event)">
                             <svg id="i-folder" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
                                 <path d="M2 26 L30 26 30 7 14 7 10 4 2 4 Z M30 12 L2 12" />
                             </svg>
