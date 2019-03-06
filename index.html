@@ -33,11 +33,14 @@
 
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+  <!-- Navigation -->
   <nav class="container nav-bar">
     <a href="#" id="home">
       <h4>Notes</h4>
     </a>
 
+    <!-- Zooming lens icon -->
     <a href="#" id="search">
       <svg id="i-search" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round"
         stroke-linejoin="round" stroke-width="2">
@@ -46,8 +49,10 @@
       </svg>
     </a>
 
+    <!-- Serch input replacing zoomin lens -->
     <input type="text" id="inputsearch" class="s-input invisible" onfocusout="toogleClass()">
 
+    <!-- Plus icon for adding notes -->
     <a href="#" id="add-note">
       <svg id="i-plus" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round"
         stroke-linejoin="round" stroke-width="2">
@@ -63,10 +68,12 @@
     <!-- Content from loader.js goes here -->
   </div>
 
+  <!-- Template the input form of adding notes -->
   <template id="input-form">
     <form id="inpuText">
-      <input type="text" id="titleInput" class="u-full-width">
-      <textarea name="message" id="messageInput" class="u-full-width"></textarea>
+      <input type="text" id="titleInput" class="u-full-width" placeholder="Add your tittle here">
+      <textarea name="message" id="messageInput" class="u-full-width" placeholder="Add your notes here"></textarea>
+      <div class="lines-form"></div>
       <button type="submit" onclick="saveTextNote(event)">
         <svg id="i-folder" viewBox="0 0 32 32" width="16" height="16" fill="none" stroke="currentcolor" stroke-linecap="round"
           stroke-linejoin="round" stroke-width="2">

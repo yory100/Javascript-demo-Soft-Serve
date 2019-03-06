@@ -13,7 +13,7 @@
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   }
   div#content .card {
-    height: 25vh;
+    height: 150px;
   }
   div#content .card h4 {
     font-size: 2rem;
@@ -32,7 +32,7 @@ h4 {
 
 a {
   text-decoration: none;
-  color: black;
+  color: #494949;
 }
 
 button {
@@ -49,12 +49,31 @@ button {
           align-items: center;
 }
 
-form {
+#inpuText {
+  position: relative;
   margin-top: 1rem;
 }
 
-form textarea {
-  height: 200px;
+#inpuText #titleInput {
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid steelblue;
+}
+
+#inpuText textarea {
+  height: 60vh;
+  border: none;
+  border-radius: 0;
+  background: none;
+}
+
+#inpuText .lines-form {
+  position: absolute;
+  z-index: -1;
+  margin-top: -330px;
+  height: 60vh;
+  width: 100%;
+  background-image: repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
 }
 
 .nav-bar {
@@ -63,7 +82,7 @@ form textarea {
   left: 0;
   right: 0;
   height: 4rem;
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #494949;
   background: #fff;
   z-index: 1;
   display: -webkit-box;
@@ -96,13 +115,16 @@ form textarea {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   margin-top: 1rem;
-  height: 6rem;
   width: 100%;
+  height: 6rem;
   overflow: hidden;
   padding: 1rem;
   border-radius: .8rem;
-  border: 1px dotted black;
+  border: 1px solid #494949;
   cursor: pointer;
+  background-color: beige;
+  -webkit-box-shadow: 5px 5px 10px 2px rgba(73, 73, 73, 0.7);
+          box-shadow: 5px 5px 10px 2px rgba(73, 73, 73, 0.7);
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -111,6 +133,16 @@ form textarea {
           align-items: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  -webkit-transition: background-color 100ms, -webkit-box-shadow 100ms;
+  transition: background-color 100ms, -webkit-box-shadow 100ms;
+  transition: background-color 100ms, box-shadow 100ms;
+  transition: background-color 100ms, box-shadow 100ms, -webkit-box-shadow 100ms;
+}
+
+.card:hover {
+  -webkit-box-shadow: none;
+          box-shadow: none;
+  background-color: rgba(245, 245, 220, 0.4);
 }
 
 .delete {
@@ -121,10 +153,22 @@ form textarea {
 }
 
 .read-message {
+  position: relative;
   margin-top: 1rem;
+  height: 100%;
 }
 
 .invisible {
   display: none;
+}
+
+.lines {
+  position: absolute;
+  z-index: -1;
+  top: 10px;
+  margin-top: 0px;
+  height: calc(100vh - 30px - 6rem);
+  width: 100%;
+  background-image: repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
 }
 /*# sourceMappingURL=main.css.map */

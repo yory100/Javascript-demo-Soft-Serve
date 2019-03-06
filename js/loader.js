@@ -25,7 +25,7 @@ function injectHtml(e) {
 
     e.preventDefault();
 
-    const clickTarget = e.target.parentElement.id;
+    const clickTarget = e.target.parentElement.id; 
 
     switch (clickTarget) {
         case 'home':
@@ -84,7 +84,8 @@ function readTextNode(id) {
                     contentToReplace.innerHTML = `<div class="read-message">
                                                     <h4>${title}</h4>
                                                     <p>${message}</p>
-                                                </div> `
+                                                    <div class="lines"></div>
+                                                 </div> `
                 }
 
             }
@@ -120,16 +121,15 @@ function saveTextNote(e) {
         message: textMessage,
     }
 
-    postData(url, text)
+    postData(url, text) 
         .then(data => console.log(JSON.stringify(data)))
-        .then( () => fetchTextNotes() )
         .catch(error => console.error(error));
 
 }
 
 // Replaces lens with search input
 
-function toogleClass() {
+function toogleClass(e) {
 
     searchA.classList.toggle('invisible');
     searchinPut.classList.toggle('invisible');

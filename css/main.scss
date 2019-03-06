@@ -1,6 +1,6 @@
 @import "media-queries";
 
-$dark-color: black;
+$dark-color: #494949;
 
 h4 {
     margin: 0;
@@ -20,12 +20,31 @@ button {
 
 }
 
-form {
+#inpuText {
+    position: relative;
     margin-top: 1rem;
 
-    textarea {
-        height: 200px;
+    #titleInput {
+        border: none;
+        border-radius: 0;
+        border-bottom: 2px solid steelblue;
     }
+
+    textarea {
+        height: 60vh;
+        border: none;
+        border-radius: 0;
+        background: none;
+    }
+
+    .lines-form {
+        position: absolute;
+        z-index: -1;
+        margin-top: -330px;
+        height: 60vh;
+        width: 100%;
+        background-image: repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
+      }
     
 }
 
@@ -62,19 +81,30 @@ form {
     position: relative;
     box-sizing: border-box;
     margin-top: 1rem;
-    height: 6rem;
     width: 100%;
+    height: 6rem;
     overflow: hidden;
     padding: 1rem;
     border-radius: .8rem;
-    border: 1px dotted $dark-color;
+    border: 1px solid $dark-color;
     cursor: pointer;
+
+    background-color: beige;
+    box-shadow: 5px 5px 10px 2px rgba(73,73,73,0.7);
 
     display: flex;
     align-items: center;
     flex-wrap: wrap;
 
+    transition: background-color 100ms, box-shadow 100ms;
+
+    &:hover {
+        box-shadow: none;
+        background-color: rgba(245,245,220,0.4);
+    }
+
 }
+
 
 .delete {
     position: absolute;
@@ -84,10 +114,24 @@ form {
 }
 
 .read-message {
+    position: relative;
     margin-top: 1rem;
+    height: 100%;
 
 }
 
 .invisible {
     display: none;
 }
+
+
+//Paper like lines
+.lines {
+    position: absolute;
+    z-index: -1;
+    top: 10px;
+    margin-top: 0px;
+    height: calc(100vh - 30px - 6rem);
+    width: 100%;
+    background-image: repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
+  }
