@@ -70,10 +70,10 @@ button {
 #inpuText .lines-form {
   position: absolute;
   z-index: -1;
-  margin-top: -330px;
+  margin-top: -313px;
   height: 60vh;
   width: 100%;
-  background-image: repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
+  background-image: repeating-linear-gradient(white 0px, white 23px, steelblue 24px);
 }
 
 .nav-bar {
@@ -166,9 +166,9 @@ button {
   position: absolute;
   z-index: -1;
   top: 10px;
-  margin-top: 0px;
-  height: calc(100vh - 30px - 6rem);
+  margin-top: 2px;
+  height: 60vh;
   width: 100%;
-  background-image: repeating-linear-gradient(white 0px, white 24px, steelblue 25px);
+  background-image: repeating-linear-gradient(white 0px, white 23px, steelblue 24px);
 }
 /*# sourceMappingURL=main.css.map */

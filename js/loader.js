@@ -92,6 +92,7 @@ function readTextNode(id) {
         }).catch(error => console.error(error));
 }
 
+
 // Delete individual Notes
 
 function deleteTextNotes(id) {
@@ -133,6 +134,13 @@ function toogleClass(e) {
 
     searchA.classList.toggle('invisible');
     searchinPut.classList.toggle('invisible');
+    searchinPut.focus();
+
+    //console.log( document.activeElement, searchinPut );
+
+    if( document.activeElement !== searchinPut ) {
+        searchinPut.value = '';
+    }
 
 }
 
@@ -196,4 +204,16 @@ function deleteData(url = ``) {
     })
     .then(response => response.json());
 
+}
+
+function putData(url = ``, data = {}) {
+
+    return fetch(url, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+    })
+    .then(response => response.json());
 }
