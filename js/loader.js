@@ -85,11 +85,21 @@ function readTextNode(id) {
                                                     <h4>${title}</h4>
                                                     <p>${message}</p>
                                                     <div class="lines"></div>
+                                                    <button onclick="editTextNote('${title}', '${message}', '${id}')">EDIT</button>
                                                  </div> `
                 }
 
             }
         }).catch(error => console.error(error));
+}
+
+function editTextNote( textT, textM, textId ) {
+    
+    addFormInput()
+    document.getElementById('titleInput').value = textT ;
+    document.getElementById('titleInput').setAttribute("data-textId", textId);
+    document.getElementById('messageInput').value = textM;
+
 }
 
 
@@ -121,10 +131,16 @@ function saveTextNote(e) {
         title: textTitle,
         message: textMessage,
     }
-
-    postData(url, text) 
-        .then(data => console.log(JSON.stringify(data)))
-        .catch(error => console.error(error));
+    if( textTitle == '' ){
+        postData(url, text) 
+            .then(data => console.log(JSON.stringify(data)))
+            .catch(error => console.error(error));
+    }else{
+        let postUrl = url + '/' + document.getElementById('titleInput').getAttribute("data-textId")
+        putData(postUrl, text) 
+            .then(data => console.log(JSON.stringify(data)))
+            .catch(error => console.error(error));
+    }
 
 }
 

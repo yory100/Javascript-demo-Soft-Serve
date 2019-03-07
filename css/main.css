@@ -158,6 +158,10 @@ button {
   height: 100%;
 }
 
+.read-message button {
+  margin-top: 50vh;
+}
+
 .invisible {
   display: none;
 }
