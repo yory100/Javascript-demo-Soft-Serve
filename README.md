@@ -3,6 +3,6 @@ Second Demo in Soft Serve academy
 
 Before running start local json server
 
-npx json-server db.json
+<div><code>npx json-server db.json</code></div>
  
 
